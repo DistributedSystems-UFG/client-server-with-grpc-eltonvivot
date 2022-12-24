@@ -59,11 +59,12 @@ class EmployeeServer(EmployeeService_pb2_grpc.EmployeeServiceServicer):
     return EmployeeService_pb2.StatusReply(status='OK')
 
   def SortEmployees(self, request, context):
-    mlist = EmployeeService_pb2.EmployeeDataList()
+    empDB.sort(key=lambda x: x['id'], reverse=False)
+    list = EmployeeService_pb2.EmployeeDataList()
     for item in empDB:
       emp_data = EmployeeService_pb2.EmployeeData(id=item['id'], name=item['name'], title=item['title']) 
-      mlist.employee_data.append(emp_data)
-    return sorted(mlist, key=lambda d: d['id']) 
+      list.employee_data.append(emp_data)
+    return list
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
