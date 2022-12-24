@@ -28,3 +28,6 @@ $:> python3 -m pip install grpcio-tools
 $:> cd python
 
 $:> python3 -m grpc_tools.protoc -I../protos --python_out=. --grpc_python_out=. ../protos/EmployeeService.proto
+
+## Video
+https://drive.google.com/file/d/1fZvX1uga6tYNOz184DPtAF_cODRhfhsT/view?usp=share_link
