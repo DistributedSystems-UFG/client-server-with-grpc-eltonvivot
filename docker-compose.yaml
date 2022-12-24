@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  grpcserver:
+    container_name: grpcserver
+    build: ../
+    image: sd
+    volumes:
+     - ./server.py:/app/server.py
+     - ./constRPYC.py:/app/constRPYC.py
+    networks:
+      - grpcnet
+    tty: true
+  
+  grpcclient:
+    container_name: grpcclient
+    build: ../
+    image: sd
+    volumes:
+     - ./client.py:/app/client.py
+     - ./constRPYC.py:/app/constRPYC.py
+    networks:
+      - grpcnet
+    tty: true
+
+networks:
+  grpcnet:
+    driver: bridge

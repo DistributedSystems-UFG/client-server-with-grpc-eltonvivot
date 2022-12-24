@@ -23,6 +23,12 @@ service EmployeeService {
 
   // List all employees
   rpc ListAllEmployees (EmptyMessage) returns (EmployeeDataList) {}
+
+  // Clear all employees
+  rpc ClearEmployees (EmptyMessage) returns (StatusReply) {}
+
+  // Sort employees
+  rpc SortEmployees (EmptyMessage) returns (EmployeeDataList) {}
   
 }
 

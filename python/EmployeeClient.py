@@ -23,9 +23,25 @@ def run():
         response = stub.UpdateEmployeeTitle(EmployeeService_pb2.EmployeeTitleUpdate(id=301, title='Senior Programmer'))
         print ('Updated employee ' + response.status)
 
+        # List all employees
+        response = stub.ListAllEmployees(EmployeeService_pb2.EmptyMessage())
+        print ('All employees: ' + str(response))
+
+        # List all employees
+        response = stub.SortEmployees(EmployeeService_pb2.EmptyMessage())
+        print ('All employees sorted: ' + str(response))
+
         # Delete an employee
         response = stub.DeleteEmployee(EmployeeService_pb2.EmployeeID(id=201))
         print ('Deleted employee ' + response.status)
+
+        # List all employees
+        response = stub.ListAllEmployees(EmployeeService_pb2.EmptyMessage())
+        print ('All employees: ' + str(response))
+
+        # Clear employees
+        response = stub.ClearEmployees(EmployeeService_pb2.EmptyMessage())
+        print ('Clear employees ' + response.status)
 
         # List all employees
         response = stub.ListAllEmployees(EmployeeService_pb2.EmptyMessage())
